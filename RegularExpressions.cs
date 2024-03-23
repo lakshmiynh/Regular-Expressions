@@ -11,14 +11,19 @@ namespace RgularExpression
 {
     public class RegularExpressions
     {
-        public string pattern = @"^[A-Z][a-zA-Z]{2,}$";
+       
 
+         
         static void Main(string[] args)
         {
             Console.WriteLine("Enter your First Name");
             string firstname = Console.ReadLine();
+
             Console.WriteLine("Enter your Last name");
             string lastname = Console.ReadLine();
+
+            Console.WriteLine("Enter your email");
+            string email= Console.ReadLine();
 
             // Create an instance of RegularExpressions
             RegularExpressions regex = new RegularExpressions();
@@ -26,19 +31,37 @@ namespace RgularExpression
             // Call validation method for both first and last name
             regex.Validation(firstname);
             regex.Validation(lastname);
+            regex.emailvalidation(email);
         }
 
         // Changed method to non-static
         public void Validation(string name)
         {
+
+             string pattern = @"^[A-Z][a-zA-Z]{2,}$";
             // Access the pattern through instance variable
-            if (Regex.IsMatch(name, this.pattern))
+            if (Regex.IsMatch(name,pattern))
             {
                 Console.WriteLine("Valid");
             }
             else
             {
                 Console.WriteLine("Please enter a valid name");
+            }
+        }
+
+        public void emailvalidation(string email) 
+        {
+
+            string mailpattern = @"^[a-z0-9]+(?:\.[a-z0-9]+)*@(?:[a-zA-Z0-9]+\.)+[a-zA-Z]{2,}$";
+
+            if (Regex.IsMatch(email,mailpattern)) 
+            {
+                Console.WriteLine("valid");
+            }
+            else
+            {
+                Console.WriteLine("Enter valid mailid");
             }
         }
 
