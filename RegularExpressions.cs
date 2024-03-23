@@ -89,7 +89,8 @@ namespace RgularExpression
 
         public void validatepassword(string password)
         {
-            string passwordpattern = @"^(?=.* [A - Z])[A - Za - z]{ 8,}$";
+            string passwordpattern = @"^(?=.* [A - Z])(?=.*\d)[A - Za - z\d]{ 8,}$";
+
 
 
             if (Regex.IsMatch(password,passwordpattern))
