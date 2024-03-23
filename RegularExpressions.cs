@@ -11,9 +11,9 @@ namespace RgularExpression
 {
     public class RegularExpressions
     {
-       
 
-         
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Enter your First Name");
@@ -23,7 +23,10 @@ namespace RgularExpression
             string lastname = Console.ReadLine();
 
             Console.WriteLine("Enter your email");
-            string email= Console.ReadLine();
+            string email = Console.ReadLine();
+
+            Console.WriteLine("Enter your phone number");
+            string phoneno = Console.ReadLine();
 
             // Create an instance of RegularExpressions
             RegularExpressions regex = new RegularExpressions();
@@ -32,6 +35,7 @@ namespace RgularExpression
             regex.Validation(firstname);
             regex.Validation(lastname);
             regex.emailvalidation(email);
+            regex.Validatephoneno(phoneno);
         }
 
         // Changed method to non-static
@@ -39,7 +43,7 @@ namespace RgularExpression
         {
 
              string pattern = @"^[A-Z][a-zA-Z]{2,}$";
-            // Access the pattern through instance variable
+            
             if (Regex.IsMatch(name,pattern))
             {
                 Console.WriteLine("Valid");
@@ -64,6 +68,22 @@ namespace RgularExpression
                 Console.WriteLine("Enter valid mailid");
             }
         }
+
+        public void Validatephoneno(string phoneno)
+        {
+            string phonepattern = @"^\d{2}\s\d{10}$"; 
+
+            if (Regex.IsMatch(phoneno, phonepattern))
+            {
+                Console.WriteLine("valid");
+            }
+            else
+            {
+                Console.WriteLine("Enter valid phone number");
+            }
+        }
+
+
 
     }  
         
