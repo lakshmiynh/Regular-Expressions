@@ -28,6 +28,9 @@ namespace RgularExpression
             Console.WriteLine("Enter your phone number");
             string phoneno = Console.ReadLine();
 
+            Console.WriteLine("Enter the password");
+            string password= Console.ReadLine();
+
             // Create an instance of RegularExpressions
             RegularExpressions regex = new RegularExpressions();
 
@@ -36,15 +39,16 @@ namespace RgularExpression
             regex.Validation(lastname);
             regex.emailvalidation(email);
             regex.Validatephoneno(phoneno);
+            regex.validatepassword(password);
         }
 
-        // Changed method to non-static
-        public void Validation(string name)
+        
+       public void Validation(string name)
         {
 
-             string pattern = @"^[A-Z][a-zA-Z]{2,}$";
-            
-            if (Regex.IsMatch(name,pattern))
+            string pattern = @"^[A-Z][a-zA-Z]{2,}$";
+
+            if (Regex.IsMatch(name, pattern))
             {
                 Console.WriteLine("Valid");
             }
@@ -54,12 +58,12 @@ namespace RgularExpression
             }
         }
 
-        public void emailvalidation(string email) 
+        public void emailvalidation(string email)
         {
 
             string mailpattern = @"^[a-z0-9]+(?:\.[a-z0-9]+)*@(?:[a-zA-Z0-9]+\.)+[a-zA-Z]{2,}$";
 
-            if (Regex.IsMatch(email,mailpattern)) 
+            if (Regex.IsMatch(email, mailpattern))
             {
                 Console.WriteLine("valid");
             }
@@ -71,7 +75,7 @@ namespace RgularExpression
 
         public void Validatephoneno(string phoneno)
         {
-            string phonepattern = @"^\d{2}\s\d{10}$"; 
+            string phonepattern = @"^\d{2}\s\d{10}$";
 
             if (Regex.IsMatch(phoneno, phonepattern))
             {
@@ -81,6 +85,21 @@ namespace RgularExpression
             {
                 Console.WriteLine("Enter valid phone number");
             }
+        }
+
+        public void validatepassword(string password)
+        {
+            string passwordpattern = @"^[A-Za-z]{8,}$";
+
+            if(Regex.IsMatch(password,passwordpattern))
+            {
+                Console.WriteLine("valid");
+            }
+            else
+            {
+                Console.WriteLine("please enter valid password");
+            }
+
         }
 
 
